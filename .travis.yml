@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_intstall:
+  - docker build -t savitar/docker-kubernetes -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true savitar/docker-kubernetes npm run test
